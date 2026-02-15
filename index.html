@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- หน้าใส่รหัส -->
+<div id="lock" class="center">
+    <h2>💌 ใส่รหัสผ่านเพื่อเข้าโลกของเราาา</h2>
+
+    <p style="opacity:0.7">
+        คำใบ้: ชื่อเค้า + ชื่อเธอ + วันพิเศษ (ตัวพิมพ์ใหญ่นาา)💖
+    </p>
+
+    <input type="password" id="pass" placeholder="ใส่รหัสที่เรารู้กัน">
+    <br><br>
+    <button onclick="checkPass()">เข้าสู่ระบบรัก</button>
+    <p id="error" style="color:red;"></p>
+</div>
+
+<!-- หน้าแรก -->
+<div id="home" class="center hidden">
+    <h1>เธอรักเค้ามั้ยย 💖</h1>
+
+    <button id="loveBtn" onclick="love()">รัก</button>
+    <button id="noBtn" onclick="growLove()">ไม่รัก</button>
+</div>
+
+<!-- หน้าหลังจากกดรัก -->
+<div id="menu" class="hidden center">
+    <h1>เธอน่ารักที่สุดเลยย 💕</h1>
+
+    <div class="menu">
+        <button onclick="openMode('quiz')">คำถาม</button>
+        <button onclick="openMode('photo')">รูปภาพ</button>
+        <button onclick="openMode('secret')">จดหมายพิเศษ</button>
+    </div>
+</div>
+
+<!-- โหมดคำถาม -->
+<div id="quiz" class="hidden center">
+    <h2>ตอบคำถามของเค้าหน่อยยจิ 💌</h2>
+
+    <p>1. เราเจอกันครั้งแรกที่ไหน?</p>
+    <input id="q1" placeholder="พิมพ์ความทรงจำของเราาา 💭">
+
+    <p>2. ใครทักใครก่อน?</p>
+    <input id="q2" placeholder="ใครเริ่มก่อนน้าา 😳">
+
+    <p>3. วาเลนไทน์นี้อยากทำอะไรด้วยกันบ้างงง?</p>
+    <input id="q3" placeholder="บอกเค้าหน่อยย อยากทำอารายย 💕">
+
+    <p>4. ถ้าให้บอกสิ่งหนึ่งที่เธอชอบในตัวเค้าคืออะไร?</p>
+    <input id="q4" placeholder="ชมเค้าหน่อยย เค้ารอฟัง 😆">
+
+    <p>5. เพลงรักที่สื่อถึงเราาช่วงนี้</p>
+    <input id="q5" placeholder="เพลงที่ทำให้นึกถึงกัน 🎵">
+
+    <p>6. 1คำที่ใช้สื่อถึงความรักที่มีให้กันน?</p>
+    <input id="q6" placeholder="1 คำที่แทนความรักเรา 💖">
+
+    <p>7. เธอรักเค้ามั้ยคะ?</p>
+    <input id="q7" placeholder="ตอบดีๆนะคะะ 😏">
+
+    <button onclick="checkAnswer()">ส่งคำตอบ 💖</button>
+    <div id="quizTable"></div>
+
+
+    <p id="quizResult"></p>
+    <button onclick="back()">กลับ</button>
+</div>
+
+<!-- โหมดรูป -->
+<div id="photo" class="hidden center">
+    <h2>โหมดรูป 📸</h2>
+
+    <div class="photoModes">
+        <button class="cuteBtn" onclick="openPhotoPage('her')">💗 รูปเธอ</button>
+        <button class="cuteBtn" onclick="openPhotoPage('me')">💙 รูปเค้า</button>
+        <button class="cuteBtn" onclick="openPhotoPage('us')">💞 รูปเรา 2 คน</button>
+    </div>
+
+    <button onclick="back()">กลับ</button>
+</div>
+
+<!-- หน้า รูปเธอ -->
+<div id="herPage" class="hidden center">
+    <h2>💗 รูปเธอ</h2>
+    <div id="herGallery"></div>
+    <button onclick="backToPhoto()">กลับ</button>
+</div>
+
+<!-- หน้า รูปเรา -->
+<div id="usPage" class="hidden center">
+    <h2>💞 รูปเรา</h2>
+    <div id="usGallery"></div>
+    <button onclick="backToPhoto()">กลับ</button>
+</div>
+
+<!-- หน้า รูปเค้า -->
+<div id="mePage" class="hidden center">
+    <h2>💙 รูปเค้า</h2>
+
+    <button class="cuteBtn" onclick="loadMe('normal')">ปกติ</button>
+    <button class="cuteBtn" onclick="showSecretBox()">🔒 secret</button>
+    
+
+    <div id="secretInputBox" class="hidden">
+        <input type="password" id="secretPass" placeholder="รหัสลับของเค้า 💙">
+        <button onclick="unlockSecret()">เปิด</button>
+        <p id="secretError" style="color:red;"></p>
+    </div>
+
+    <div id="meGallery"></div>
+    <button onclick="backToPhoto()">กลับ</button>
+</div>
+<!-- โหมดพิเศษ -->
+<div id="secret" class="hidden center">
+
+    <div class="secretBox">
+        <h2>🔐 ความลับ(รัก)ของเรา</h2>
+        <p class="secretHint">มีบางอย่างอยู่ในคำตอบของคำถาม3 5746 621💭</p>
+
+        <input type="text" id="secretMainPass" placeholder="ใส่รหัส 💖">
+        <br><br>
+        <button class="secretOpenBtn" onclick="openSecret()">เปิดความลับ</button>
+
+        <p id="secretMainError" class="secretError"></p>
+    </div>
+
+    <div id="secretContent" class="hidden secretContent">
+        <h3>💌 ข้อความถึงเธอ</h3>
+        <p>
+            ขอบคุณที่เข้ามาอยู่ในชีวิตเค้า  
+            ขอบคุณทุกความทรงจำที่เรามีด้วยกัน  
+            ต่อให้โลกจะยุ่งเหยิงแค่ไหน  
+            เค้าก็ยังอยากมีเธออยู่ตรงนี้เสมอ 💕
+        </p>
+        <div class="loveWorld">
+
+    <div class="mist"></div>
+    <div class="stars"></div>
+
+    <div class="treeWrapper">
+
+        <div class="trunk"></div>
+
+        <div id="crown"></div>
+
+        <div class="messageBox">
+            <h2 class="loveText">เค้ารักเธอที่สุดในโลก 💖</h2>
+            <p class="subText">ขอบคุณที่อยู่ด้วยกันนะ</p>
+        </div>
+
+    </div>
+
+    <div id="fallingHearts"></div>
+
+</div>
+
+    </div>
+    <button onclick="back()">กลับ</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
