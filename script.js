@@ -168,7 +168,7 @@ function backToPhoto(){
 function loadHer(){
     const box=document.getElementById("herGallery");
     box.innerHTML="";
-    ["images/her1.jpg","images/her2.jpg"].forEach(src=>{
+    ["u1.jpg","u2.jpg","u3.jpg","u4.jpg","u5.jpg","u6.jpg","u7.jpg","u8.jpg","u9.jpg","u11.jpg","u12.jpg","u13.jpg","u1.jpg"].forEach(src=>{
         const img=document.createElement("img");
         img.src=src;
         img.className="photo";
@@ -179,7 +179,7 @@ function loadHer(){
 function loadUs(){
     const box=document.getElementById("usGallery");
     box.innerHTML="";
-    ["images/us1.jpg","images/us2.jpg"].forEach(src=>{
+    [].forEach(src=>{
         const img=document.createElement("img");
         img.src=src;
         img.className="photo";
@@ -193,7 +193,7 @@ function loadMe(mode){
 
     let imgs = mode==="secret"
         ? ["secret2.webp"]
-        : ["me1.jpg","images/me2.jpg"];
+        : ["me1.jpg","me2.webp","me3.jpg","me4.webp"];
 
     imgs.forEach(src=>{
         const img=document.createElement("img");
@@ -212,7 +212,7 @@ function showSecretBox(){
 function unlockSecret(){
     const pass=document.getElementById("secretPass").value;
 
-    if(pass==="K56"){
+    if(pass==="56"){
         document.getElementById("secretInputBox").classList.add("hidden");
         loadMe("secret");
     }else{
