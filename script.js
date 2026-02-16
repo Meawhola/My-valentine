@@ -22,10 +22,10 @@ const noQuestions = [
 
 let noIndex = 0;
 
-let loveSize = 18;
+let loveSize = 15;
 
 function growLove(){
-    loveSize += 10;
+    loveSize += 7;
     let loveBtn = document.getElementById("loveBtn");
     loveBtn.style.fontSize = loveSize+"px";
 
