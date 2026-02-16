@@ -240,20 +240,22 @@ function generateTree(){
 
     crown.innerHTML="";
 
-    const centerX = 260;
-    const centerY = 190;
+    // 👉 ใช้ขนาดจริงของกล่องแทนค่าตายตัว
+    const rect = crown.getBoundingClientRect();
+    const centerX = rect.width/2;
+    const centerY = rect.height/2;
 
-    for(let i=0;i<160;i++){   // ใบเพิ่มเป็น 160
+    // 👉 scale ย่ออัตโนมัติตามจอ
+    const scale = Math.min(rect.width-100, rect.height-100) / 30;
+
+    for(let i=0;i<160;i++){
         const t = Math.random()*Math.PI*2;
 
-        // สูตรหัวใจ
         const x = 16*Math.pow(Math.sin(t),3);
         const y = -(13*Math.cos(t)
                   -5*Math.cos(2*t)
                   -2*Math.cos(3*t)
                   -Math.cos(4*t));
-
-        const scale = 9 + Math.random()*2;
 
         const leaf=document.createElement("div");
         leaf.className="leaf";
